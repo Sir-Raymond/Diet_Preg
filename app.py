@@ -26,11 +26,23 @@ def set_background(image_file):
         border-radius: 10px;
         padding: 2.5rem;
     }}
+
+    @media only screen and (max-width: 768px) {{
+        [data-testid="stAppViewContainer"] {{
+            background-size: contain;
+            background-position: center;
+            background-attachment: scroll;
+        }}
+        .block-container {{
+            padding: 1rem;
+        }}
+    }}
     </style>
     '''
     st.markdown(background_css, unsafe_allow_html=True)
 
 set_background("background.jpeg")
+
 st.title("🥗 DietPreg Recommender System")
 
 # --- Nutrient Calculator Function ---
