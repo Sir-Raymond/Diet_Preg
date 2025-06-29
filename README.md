@@ -1,1 +1,1 @@
-# Diet_Preg
+# DietPreg Recommender System
