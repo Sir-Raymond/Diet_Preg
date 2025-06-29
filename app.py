@@ -10,35 +10,47 @@ st.set_page_config(page_title="Smart Diet Recommendation", layout="centered")
 def set_background(image_file):
     with open(image_file, "rb") as f:
         encoded_image = base64.b64encode(f.read()).decode()
-    background_css = f'''
+
+    background_css = f"""
     <style>
+    /* Apply to entire background */
     [data-testid="stAppViewContainer"] {{
         background-image: url("data:image/jpg;base64,{encoded_image}");
-        background-size: cover;
         background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
         background-attachment: fixed;
     }}
+
+    /* Header and toolbar styling */
     [data-testid="stHeader"], [data-testid="stToolbar"] {{
         background-color: rgba(0, 0, 0, 0.6);
     }}
+
+    /* Main content block styling */
     .block-container {{
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        padding: 2.5rem;
+        background-color: rgba(0, 0, 0, 0.85);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1rem auto;
+        max-width: 95%;
     }}
 
-    @media only screen and (max-width: 768px) {{
+    /* MEDIA QUERY for small/mobile screens */
+    @media screen and (max-width: 768px) {{
         [data-testid="stAppViewContainer"] {{
             background-size: contain;
-            background-position: center;
             background-attachment: scroll;
+            background-position: top center;
         }}
+
         .block-container {{
             padding: 1rem;
+            margin: 0.5rem;
         }}
     }}
     </style>
-    '''
+    """
     st.markdown(background_css, unsafe_allow_html=True)
 
 set_background("background.jpeg")
