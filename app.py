@@ -13,7 +13,7 @@ def set_background(image_file):
 
     background_css = f"""
     <style>
-    /* Apply to entire background */
+    /* Global Background */
     [data-testid="stAppViewContainer"] {{
         background-image: url("data:image/jpg;base64,{encoded_image}");
         background-repeat: no-repeat;
@@ -22,31 +22,40 @@ def set_background(image_file):
         background-attachment: fixed;
     }}
 
-    /* Header and toolbar styling */
     [data-testid="stHeader"], [data-testid="stToolbar"] {{
         background-color: rgba(0, 0, 0, 0.6);
     }}
 
-    /* Main content block styling */
     .block-container {{
         background-color: rgba(0, 0, 0, 0.85);
         border-radius: 12px;
         padding: 2rem;
-        margin: 1rem auto;
+        margin: 2rem auto;
         max-width: 95%;
+        font-size: 1.1rem;
     }}
 
-    /* MEDIA QUERY for small/mobile screens */
+    /* Improve mobile scaling */
     @media screen and (max-width: 768px) {{
         [data-testid="stAppViewContainer"] {{
-            background-size: contain;
+            background-size: cover;
             background-attachment: scroll;
-            background-position: top center;
+            background-position: center top;
         }}
 
         .block-container {{
             padding: 1rem;
-            margin: 0.5rem;
+            margin: 0.5rem auto;
+            width: 100%;
+            font-size: 1.2rem;
+        }}
+
+        .stTextInput input, .stTextArea textarea, .stSelectbox div, .stButton button {{
+            font-size: 1.1rem !important;
+        }}
+
+        .stRadio label, .stMarkdown p {{
+            font-size: 1.1rem !important;
         }}
     }}
     </style>
