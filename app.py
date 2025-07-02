@@ -147,7 +147,7 @@ if st.sidebar.button("Get Recommendations"):
     st.markdown("---")
     st.subheader("🥗 Top Diet Recommendations")
     top_diets = df[df['Energ_Kcal'] < caloric_intake + 100].sort_values(by=['Energ_Kcal'], ascending=False).head(10)
-    st.dataframe(top_diets)
+    st.dataframe(top_diets[['Shrt_Desc', 'Energ_Kcal']])
 
     csv = top_diets.to_csv(index=False).encode('utf-8')
     st.download_button(
